@@ -1,0 +1,487 @@
+<nav
+  class="navbar navbar-expand navbar-light bg-danger d-flex justify-content-between"
+>
+  <div class="navbar-brand mb-0 h1 text-white">ACTA DE REUNION</div>
+  <div class="navbar-brand mb-0 h1 text-white"></div>
+</nav>
+
+<div class="container-fluid">
+  <form #resumeForm="ngForm">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <h4 class="card-title d-flex align-items-center">DETALLES</h4>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="resume.name"
+                    name="name"
+                    placeholder="Name"
+                    #Name="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Name.invalid && (Name.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="date"
+                    class="form-control"
+                    [(ngModel)]="resume.fecha"
+                    name="fecha"
+                    placeholder="Fecha"
+                    #Fecha="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Fecha.invalid && (Fecha.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="resume.lugar"
+                    name="objetivo"
+                    placeholder="Lugar"
+                    #Lugar="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Lugar.invalid && (Lugar.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="resume.noActa"
+                    name="noActa"
+                    placeholder="No. Acta"
+                    #noActa="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        noActa.invalid &&
+                        (noActa.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="resume.objetivo"
+                    name="objetivo"
+                    placeholder="Objetivo"
+                    #Objetivo="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Objetivo.invalid &&
+                        (Objetivo.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="resume.horaInicial"
+                    name="horaInicial"
+                    placeholder="Hora Inicial"
+                    #horaInicial="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        horaInicial.invalid &&
+                        (horaInicial.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="time"
+                    class="form-control"
+                    [(ngModel)]="resume.horaFinal"
+                    name="horaFinal"
+                    placeholder="Hora Final"
+                    #horaFinal="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        horaFinal.invalid &&
+                        (horaFinal.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Antecedentes -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center">Antecedentes</h4>
+            </div>
+
+            <div class="row" *ngFor="let ant of resume.infos; let i = index">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="employer{{ i }}"
+                    [(ngModel)]="ant.employer"
+                    placeholder="Employer"
+                    #Employer="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Employer.invalid &&
+                        (Employer.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agenda -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center">Agenda</h4>
+            </div>
+            <div class="row" *ngFor="let e of resume.agendas; let i = index">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="employer{{ i }}"
+                    [(ngModel)]="e.employer2"
+                    placeholder="Employer"
+                    #Employer="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Employer.invalid &&
+                        (Employer.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desarrollo -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center">Desarrollo</h4>
+              <button class="btn btn-primary" (click)="addDesarrollo()">
+                +
+              </button>
+            </div>
+            <div
+              class="row"
+              *ngFor="let ex of resume.desarrollos; let i = index"
+            >
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="employer{{ i }}"
+                    [(ngModel)]="ex.employer3"
+                    placeholder="Employer"
+                    #Employer="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Employer.invalid &&
+                        (Employer.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center">
+                <i class="material-icons"> account_circle </i>
+                COMPROMISOS
+              </h4>
+              <button class="btn btn-primary" (click)="addEducation()">
+                +
+              </button>
+            </div>
+            <div
+              class="row"
+              *ngFor="let ed of resume.educations; let i = index"
+            >
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="compromisoAccion{{ i }}"
+                    [(ngModel)]="ed.compromisoAccion"
+                    placeholder="Compromiso/Accion"
+                    #compromisoAccion="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        compromisoAccion.invalid &&
+                        (compromisoAccion.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="fechaAsignada{{ i }}"
+                    [(ngModel)]="ed.fechaAsignada"
+                    placeholder="fechaAsignada"
+                    #fechaAsignada="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        fechaAsignada.invalid &&
+                        (fechaAsignada.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="fechaEntrega{{ i }}"
+                    [(ngModel)]="ed.fechaEntrega"
+                    placeholder="fechaEntrega"
+                    #fechaEntrega="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        fechaEntrega.invalid &&
+                        (fechaEntrega.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="responsable{{ i }}"
+                    [(ngModel)]="ed.responsable"
+                    placeholder="Responsable"
+                    #Responsable="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Responsable.invalid &&
+                        (Responsable.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center">PARTICIPANTES</h4>
+              <button class="btn btn-primary" (click)="addExperience()">
+                +
+              </button>
+            </div>
+            <div
+              class="row"
+              *ngFor="let ex of resume.experiences; let i = index"
+            >
+              <div class="col-md-2">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nombre{{ i }}"
+                    [(ngModel)]="ex.nombre"
+                    placeholder="Nombre"
+                    #Nombre="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Nombre.invalid &&
+                        (Nombre.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <select
+                    class="form-control"
+                    placeholder="Entidad/Cargo"
+                    name="entidadCargo{{ i }}"
+                    [(ngModel)]="ex.entidadCargo"
+                    #entidadCargo="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        entidadCargo.invalid &&
+                        (entidadCargo.touched || resumeForm.submitted)
+                    }"
+                  >
+                    <option [value]="d" *ngFor="let d of degrees">
+                      {{ d }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="correo{{ i }}"
+                    [(ngModel)]="ex.correo"
+                    placeholder="Correo"
+                    #Correo="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Correo.invalid &&
+                        (Correo.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="telefonoExtension{{ i }}"
+                    [(ngModel)]="ex.telefonoExtension"
+                    placeholder="Telefono/extension"
+                    #telefonoExtension="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        telefonoExtension.invalid &&
+                        (telefonoExtension.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="firma{{ i }}"
+                    [(ngModel)]="ex.firma"
+                    placeholder="Firma"
+                    #Firma="ngModel"
+                    required
+                    [ngClass]="{
+                      'is-invalid':
+                        Firma.invalid && (Firma.touched || resumeForm.submitted)
+                    }"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="shadow-sm card action-buttons">
+          <button
+            (click)="resumeForm.valid ? generatePdf('open') : ''"
+            class="btn btn-secondary d-flex align-items-center justify-content-center"
+          >
+            <i class="material-icons"> picture_as_pdf </i>
+            <span>Vista previa PDF</span>
+          </button>
+          <button
+            (click)="resumeForm.valid ? generatePdf('download') : ''"
+            class="btn btn-secondary d-flex align-items-center justify-content-center"
+          >
+            <i class="material-icons"> cloud_download </i
+            ><span>Download PDF</span>
+          </button>
+          <button
+            (click)="resumeForm.valid ? generatePdf('print') : ''"
+            class="btn btn-secondary d-flex align-items-center justify-content-center"
+          >
+            <i class="material-icons"> print </i><span>Imprimir PDF</span>
+          </button>
+
+          <button
+            type="reset"
+            (click)="resetForm()"
+            class="btn btn-secondary d-flex align-items-center justify-content-center"
+          >
+            <i class="material-icons"> clear </i><span>Limpiar</span>
+          </button>
+        </div>
+
+        <div class="card p-4">
+          <div class="form-group">
+            <label class="h4 mb-3" for="">Logo Empresarial</label>
+            <input
+              type="file"
+              class="form-control-file"
+              (change)="fileChanged($event)"
+              aria-describedby="fileHelpId"
+            />
+          </div>
+          <img *ngIf="resume.profilePic" [src]="resume.profilePic" class="img-thumbnail"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
